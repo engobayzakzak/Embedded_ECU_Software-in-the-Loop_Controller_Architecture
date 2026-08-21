@@ -1,8 +1,4 @@
-Comprehensive Technical Report: Embedded Software-in-the-Loop (SIL) Controller Architecture
-
-**Author:** Embedded & Control Systems Engineering  
-**Standard Compliance:** ISO 26262 (ASIL-B Ready Design Patterns), MISRA-C:2012  
-**Target Silicon:** STM32G474 / Native SIL Harness
+# Comprehensive Technical Report: Embedded Software-in-the-Loop (SIL) Controller Architecture
 
 ---
 
@@ -58,11 +54,11 @@ $$u[k] = \text{clamp}\left(P[k] + I[k] + D[k], -u_{\max}, +u_{\max}\right)$$
 
 The virtual CAN driver implements standard hardware bitwise mailbox acceptance masking:
 
-$$\text{Frame Accepted} \iff (\text{CAN\_ID} \land \text{MASK}) == (\text{FILTER\_ID} \land \text{MASK})$$
+$$\text{Frame Accepted} \iff (\text{CAN\ID} \land \text{MASK}) == (\text{FILTER\ID} \land \text{MASK})$$
 
 For Filter Bank 0:
 
-- $\text{FILTER\_ID} = 0x100$ (`0001 0000 0000_b`)
+- $\text{FILTER\ID} = 0x100$ (`0001 0000 0000_b`)
 - $\text{MASK} = 0x700$ (`0111 0000 0000_b`)
 - **Accepted ID Range:** $0x100 \le \text{ID} \le 0x1FF$ (All Command and Telemetry Packets Accepted; peripheral noise dropped at zero CPU cost).
 
