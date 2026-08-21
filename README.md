@@ -21,29 +21,31 @@ Accompanying the firmware is a complete **KiCAD hardware electronic design** (sc
 
 The firmware is divided into strictly decoupled layers conforming to safety-critical embedded standards (ISO 26262 / IEC 61508):
 
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
-│ APPLICATION & SUPERVISORY LAYER │
-│ ├── Hierarchical State Machine (Init, Standby, Active, Fault) │
-│ └── Safety Supervisor & Latching Fault Interlocks │
+│ APPLICATION & SUPERVISORY LAYER                                        │
+│ ├── Hierarchical State Machine (Init, Standby, Active, Fault)          │
+│ └── Safety Supervisor & Latching Fault Interlocks                      │
 └───────────────────────────────────┬────────────────────────────────────┘
-│ IPC Queues (Thread-Safe)
+                                    │ IPC Queues (Thread-Safe)
 ┌───────────────────────────────────▼────────────────────────────────────┐
-│ CONTROL & ALGORITHMS LAYER │
-│ ├── 1000 Hz Discrete PID with Anti-Windup Clamping │
-│ └── Derivative Low-Pass Filtering & Slew-Rate Limiter │
+│ CONTROL & ALGORITHMS LAYER                                             │
+│ ├── 1000 Hz Discrete PID with Anti-Windup Clamping                     │
+│ └── Derivative Low-Pass Filtering & Slew-Rate Limiter                  │
 └───────────────────────────────────┬────────────────────────────────────┘
-│
+                                    │ Task Notifications / State Structs
 ┌───────────────────────────────────▼────────────────────────────────────┐
-│ MIDDLEWARE & RTOS SCHEDULING LAYER │
-│ ├── FreeRTOS Rate-Monotonic Priority Scheduling (1 ms Tick) │
-│ └── Zero-Copy Ring Buffers & Mutex Protected Mailboxes │
+│ MIDDLEWARE & RTOS SCHEDULING LAYER                                     │
+│ ├── FreeRTOS Rate-Monotonic Priority Scheduling (1 ms Tick)            │
+│ └── Zero-Copy Ring Buffers & Mutex Protected Mailboxes                 │
 └───────────────────────────────────┬────────────────────────────────────┘
-│ Driver API
+                                    │ Driver API / Hardware Abstraction
 ┌───────────────────────────────────▼────────────────────────────────────┐
-│ DEVICE DRIVERS & PROTOCOLS LAYER │
-│ ├── CAN 2.0B / CAN-FD Driver with Acceptance Filter Banks │
-│ └── Ring-Buffer Hardware Abstraction Layer (HAL) │
+│ DEVICE DRIVERS & PROTOCOLS LAYER                                       │
+│ ├── CAN 2.0B / CAN-FD Driver with Acceptance Filter Banks              │
+│ └── Ring-Buffer Hardware Abstraction Layer (HAL)                       │
 └────────────────────────────────────────────────────────────────────────┘
+```
 
 ### RTOS Scheduling Matrix
 
