@@ -2,7 +2,7 @@ Embedded ECU Software-in-the-Loop (SIL) Controller Architecture
 
 [![Firmware CI / SIL Test Harness](https://img.shields.io/badge/CI-Passing-brightgreen.svg?style=flat-square)](#)
 [![Standards: MISRA-C / ISO 26262](https://img.shields.io/badge/Standard-ISO%2026262%20%7C%20MISRA--C-blue.svg?style=flat-square)](#)
-[![Language: C11 / RTOS](https://img.shields.io/badge/Language-C11%20%7C%20FreeRTOS-orange.svg?style=flat-square)](#)
+[![Language: C++ / RTOS](https://img.shields.io/badge/Language-C++%20%7C%20FreeRTOS-orange.svg?style=flat-square)](#)
 [![Hardware: KiCAD EDA](https://img.shields.io/badge/Hardware-KiCAD%20Schematic%20%26%20PCB-blueviolet.svg?style=flat-square)](#)
 
 ---
